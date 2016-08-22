@@ -49,4 +49,14 @@ function draw() {
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
+  background(255);
+  noCursor();
+  smooth();
+  strokeWeight(3);
+  
+  x = random(width);
+  y = random(height);
+  r = random(255);
+  g = random(255);
+  b = random(255);
 }
