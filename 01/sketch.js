@@ -2,8 +2,8 @@
 // By Jaime Patarroyo
 
 var x, y;
-var rad = 0;
-var dir = 1;
+var rad;
+var dir;
 var r,g,b;
 
 function setup() {
@@ -15,6 +15,8 @@ function setup() {
   
   x = random(width);
   y = random(height);
+  rad = 0;
+  dir = 1;
   r = random(255);
   g = random(255);
   b = random(255);
@@ -49,13 +51,11 @@ function draw() {
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
-  background(255);
-  noCursor();
-  smooth();
-  strokeWeight(3);
   
   x = random(width);
   y = random(height);
+  rad = 0;
+  dir = 1;
   r = random(255);
   g = random(255);
   b = random(255);
