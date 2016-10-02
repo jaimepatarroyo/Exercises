@@ -2,7 +2,18 @@
 // By Jaime Patarroyo
 
 var coordinates = [];
-var systems = [];
+var system;
+var c = 0;
+var c2 = 2;
+var c3 = 4;
+var c4 = 6;
+var c5 = 8;
+var c6 = 10;
+var c7 = 12;
+var c8 = 14;
+var c9 = 16;
+var c10 = 18;
+
 var r;
 var g;
 var b;
@@ -37,6 +48,8 @@ function setup() {
   coordinates.push(createVector(0.56, 0.2));
   coordinates.push(createVector(0.56, 0.4));
   coordinates.push(createVector(0.56, 0.6));
+  
+  system = new ParticleSystem();
 
   r = random(255);
   g = random(255);
@@ -46,28 +59,84 @@ function setup() {
   gB = random(255);
   bB = random(255);
 
-  var size;
-  if (width < height)
-    size = width;
-  else
-    size = height;
-
-  for (var i = 0; i < coordinates.length; i++) {
-    systems.push(new ParticleSystem(createVector(coordinates[i].x * size / 2, coordinates[i].y * size / 2)));
-  }
-
 }
 
 
 function draw() {
   background(rB, gB, bB);
+  
+  if (c < coordinates.length) {
+    system.addParticle(coordinates[c]);
+    c++;
+  } else {
+    c = 0;
+  }
+  
+  if (c2 < coordinates.length) {
+    system.addParticle(coordinates[c2]);
+    c2++;
+  } else {
+    c2 = 0;
+  }
+  
+  if (c3 < coordinates.length) {
+    system.addParticle(coordinates[c3]);
+    c3++;
+  } else {
+    c3 = 0;
+  }
+  
+  if (c4 < coordinates.length) {
+    system.addParticle(coordinates[c4]);
+    c4++;
+  } else {
+    c4 = 0;
+  }
+  
+  if (c5 < coordinates.length) {
+    system.addParticle(coordinates[c5]);
+    c5++;
+  } else {
+    c5 = 0;
+  }
+  
+  if (c6 < coordinates.length) {
+    system.addParticle(coordinates[c6]);
+    c6++;
+  } else {
+    c6 = 0;
+  }
+  
+  if (c7 < coordinates.length) {
+    system.addParticle(coordinates[c7]);
+    c7++;
+  } else {
+    c7 = 0;
+  }
+  
+  if (c8 < coordinates.length) {
+    system.addParticle(coordinates[c8]);
+    c8++;
+  } else {
+    c8 = 0;
+  }
+  
+  if (c9 < coordinates.length) {
+    system.addParticle(coordinates[c9]);
+    c9++;
+  } else {
+    c9 = 0;
+  }
+  
+  if (c10 < coordinates.length) {
+    system.addParticle(coordinates[c10]);
+    c10++;
+  } else {
+    c10 = 0;
+  }
 
   translate(width / 2, height / 2);
-  for (var j = 0; j < systems.length; j++) {
-    systems[j].run();
-    systems[j].addParticle();
-
-  }
+  system.run();
   translate(0, 0);
 
   r += random(-3, 3);
@@ -85,18 +154,7 @@ function draw() {
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
-  background(255);
-
-  systems = [];
-  var size;
-  if (width < height)
-    size = width;
-  else
-    size = height;
-
-  for (var i = 0; i < coordinates.length; i++) {
-    systems.push(new ParticleSystem(createVector(coordinates[i].x * size / 2, coordinates[i].y * size / 2)));
-  }
+  background(rB, gB, bB);
 
 }
 
@@ -136,12 +194,15 @@ function Particle(lvector) {
 }
 
 
-function ParticleSystem(location) {
-  this.origin = location;
+function ParticleSystem() {
   this.particles = [];
 
-  this.addParticle = function() {
-    this.particles.push(new Particle(createVector(this.origin.x, this.origin.y)));
+  this.addParticle = function(location) {
+    var origin = location;
+    var s;
+    if (width < height) s = width;
+    else s = height;
+    this.particles.push(new Particle(createVector(origin.x * s / 2, origin.y * s / 2)));
   }
 
   this.run = function() {
@@ -152,4 +213,5 @@ function ParticleSystem(location) {
         this.particles.splice(i, 1);
     }
   }
+
 }
