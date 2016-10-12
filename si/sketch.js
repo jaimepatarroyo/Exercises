@@ -58,7 +58,20 @@ function setup() {
   rB = random(255);
   gB = random(255);
   bB = random(255);
+  
+  setInterval(changeColor, 500);
 
+}
+
+
+function changeColor() {
+  r = random(255);
+  g = random(255);
+  b = random(255);
+
+  rB = random(255);
+  gB = random(255);
+  bB = random(255);
 }
 
 
