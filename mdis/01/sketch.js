@@ -38,6 +38,7 @@ function windowResized() {
   gol.init();
 }
 
+
 function GOL() {
   this.w = 40;
   this.columns = floor(width / this.w)+1;
