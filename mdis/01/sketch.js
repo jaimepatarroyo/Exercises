@@ -31,6 +31,12 @@ function make2Darray(cols, rows) {
   return arr;
 }
 
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+  background(255);
+  
+  gol.init();
+}
 
 function GOL() {
   this.w = 40;
@@ -54,6 +60,13 @@ function GOL() {
   }
 
   this.init = function() {
+    this.columns = floor(width / this.w)+1;
+    this.rows = floor(height / this.w)+1;
+
+    // Game of life board
+    this.board = make2Darray(this.columns, this.rows);
+    this.colors = make2Darray(this.columns, this.rows);
+    
     for (var i = 0; i < this.columns; i++) {
       for (var j = 0; j < this.rows; j++) {
         this.board[i][j] = 0; //int(random(2));
