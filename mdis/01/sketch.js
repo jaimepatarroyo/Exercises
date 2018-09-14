@@ -43,7 +43,7 @@ function windowResized() {
 
 
 function GOL() {
-  this.w = 40;
+  this.w = floor(height/24);
   this.columns = floor(width / this.w)+1;
   this.rows = floor(height / this.w)+1;
 
@@ -64,6 +64,7 @@ function GOL() {
   }
 
   this.init = function() {
+    this.w = floor(height/24);
     this.columns = floor(width / this.w)+1;
     this.rows = floor(height / this.w)+1;
 
