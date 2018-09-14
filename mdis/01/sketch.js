@@ -20,6 +20,9 @@ function draw() {
 
 // reset board when mouse is pressed
 function mousePressed() {
+  resizeCanvas(windowWidth, windowHeight);
+  background(255);
+  
   gol.init();
 }
 
